@@ -27,6 +27,7 @@ class character{
 
         int attack(character &enemy);
         int getHP();
+        int getDefence();
         bool isAlive();
     private:
     // 生命，攻击力，防御力属性
@@ -75,6 +76,10 @@ inline bool character::isAlive(){
         return true;
     else
         return false;
+}
+
+inline int character::getDefence(){
+    return defence_;
 }
 
 #endif 

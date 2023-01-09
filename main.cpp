@@ -43,7 +43,28 @@ int main() {
     character player(10,2,1);
     character enemy(10,3,1);
 
-    
+    while(player.isAlive() && enemy.isAlive()){
+        cout << "your hp is:" << player.getHP() << endl;
+        cout << "your enemy's hp is:" << enemy.getHP() << endl;
+        cout << "\nwhat's your choice!!!\n\t1.attack\t2.defence\n" << endl;
+    }
+    int playerChoice;
+    cin >> playerChoice;
+
+    switch (playerChoice) {
+        case 1: 
+            log("you are attacking your enemy!!");
+            // player.attack(enemy);
+            sleep(1);
+            cout << "你对敌方造成了" << player.attack(enemy) << "点伤害" << endl;
+        case 2:
+            log("your enemy is going to attack you! DEFENCE!");
+            sleep(1);
+            cout << "你的防御力提高了" << player.getDefence() << "点" << endl;
+            sleep(1);
+            cout << "敌方实际对你造成了" << enemy.attack(player) << "点伤害!";
+
+    }
 
     
     gameLoading(func);
