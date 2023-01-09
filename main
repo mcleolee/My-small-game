@@ -12,18 +12,18 @@ using namespace std;
 
 
 void gameLoading(func& func){
-    // å•¥å‘—è¿›åº¦æ¡
+    // É¶ßÂ½ø¶ÈÌõ
     func.clear();
     for(int i=0; i<1; i++)
     {
         func.clear();
-        log("æ­£åœ¨åŠ è½½.");
+        log("ÕıÔÚ¼ÓÔØ.");
         sleep(1);
         func.clear();
-        log("æ­£åœ¨åŠ è½½..");
+        log("ÕıÔÚ¼ÓÔØ..");
         sleep(1);
         func.clear();
-        log("æ­£åœ¨åŠ è½½...");
+        log("ÕıÔÚ¼ÓÔØ...");
         sleep(1);
     }
     sleep(1);
@@ -37,14 +37,14 @@ void gameStart(func& func, text& gameText){
 
 
 int main() {
-    // -- åˆå§‹åŒ– --
+    // -- ³õÊ¼»¯ --
     text gameText;
     func func;
     character player(10,2,1);
     character enemy(10,3,1);
 
-    gameLoading(func);
-    gameStart(func, gameText);
+    // gameLoading(func);
+    // gameStart(func, gameText);
 
     while (player.isAlive() && enemy.isAlive()) {
         cout << "your hp is:" << player.getHP() << endl;
@@ -59,29 +59,28 @@ int main() {
             log("you are attacking your enemy!!");
             // player.attack(enemy);
             sleep(1);
-            cout << "ä½ å¯¹æ•Œæ–¹é€ æˆäº†" << player.attack(enemy) << "ç‚¹ä¼¤å®³" << endl;
+            cout << "Äã¶ÔµĞ·½Ôì³ÉÁË" << player.attack(enemy) << "µãÉËº¦" << endl;
             break;
         case 2:
             log("your enemy is going to attack you! DEFENCE!");
             sleep(1);
             player.increaseDefForOneRound();
-            cout << "ä½ çš„é˜²å¾¡åŠ›æé«˜åˆ°äº†" << player.getDefence() + 5 << "ç‚¹" << endl;
-            // cout << "ä½ çš„é˜²å¾¡åŠ›æé«˜åˆ°äº†" << player.getDefence() + 5 << "ç‚¹" << endl;
+            cout << "ÄãµÄ·ÀÓùÁ¦Ìá¸ßµ½ÁË" << player.getDefence() + 5 << "µã" << endl;
             sleep(1);
-            cout << "æ•Œæ–¹å®é™…å¯¹ä½ é€ æˆäº†" << enemy.attack(player) << "ç‚¹ä¼¤å®³!" << endl;
+            cout << "µĞ·½Êµ¼Ê¶ÔÄãÔì³ÉÁË" << enemy.attack(player) << "µãÉËº¦!" << endl;
             player.decreaseDefForOneRound();
             break;
         default:
-            log("è¾“æ•°å­—ï¼Œokï¼Ÿ");
+            log("ÊäÊı×Ö£¬ok£¿");
             break;
         }
     }
 
-    // -- æ¸¸æˆç»“æŸ --
+    // -- ÓÎÏ·½áÊø --
     if(player.isAlive()){
-        log("æ­å–œä½ è·èƒœäº†ï¼");
+        log("¹§Ï²Äã»ñÊ¤ÁË£¡");
     }else{
-        log("å¾ˆæ‹‰èƒ¯ï¼Œä½ å¤±è´¥äº†...");
+        log("ºÜÀ­¿è£¬ÄãÊ§°ÜÁË...");
     }
     return 0;
 }

@@ -12,6 +12,7 @@ using namespace std;
 class text{
     public:
         int printHello();
+        int printHintForUnreadableCode();
 };
 
 class func{
@@ -29,6 +30,8 @@ class character{
         int getHP();
         int getDefence();
         bool isAlive();
+        int increaseDefForOneRound();
+        int decreaseDefForOneRound();
     private:
     // 生命，攻击力，防御力属性
         int hp_;
@@ -43,6 +46,11 @@ class character{
 inline int text::printHello() {
     cout << "\n\t欢迎来我的游戏！\n";
     return 0;
+}
+
+inline int text::printHintForUnreadableCode(){
+    cout << "\t如果你现在是用的 Windows 的终端打开的这个程序\n\t那么你可以新开一个命令提示行或者终端";
+    cout << "然后输入chcp 65001，回车，然后把exe文件拖进终端，回车就可以运行啦" << endl;
 }
 
 inline int func::clear(){
@@ -82,5 +90,14 @@ inline int character::getDefence(){
     return defence_;
 }
 
+inline int character::increaseDefForOneRound(){
+    defence_ += 5;
+    return defence_;
+}
+
+inline int character::decreaseDefForOneRound(){
+    defence_ -= 5;
+    return defence_;
+}
 #endif 
 //MYGAME
