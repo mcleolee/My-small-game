@@ -9,28 +9,26 @@
 
 using namespace std;
 
-
-
-void gameLoading(func& func){
+void gameLoading(func& func, int systemNum){
     // 啥呗进度条
-    func.clear();
+    func.clear(systemNum);
     for(int i=0; i<1; i++)
     {
-        func.clear();
+        func.clear(systemNum);
         log("正在加载.");
         sleep(1);
-        func.clear();
+        func.clear(systemNum);
         log("正在加载..");
         sleep(1);
-        func.clear();
-        log("正在加载...");
-        sleep(1);
+        func.clear(systemNum);
+        // log("正在加载...");
+        // sleep(1);
     }
     sleep(1);
 }
 
-void gameStart(func& func, text& gameText){
-    func.clear();
+void gameStart(func& func, text& gameText, int systemNum){
+    func.clear(systemNum);
     gameText.printHello();
     func.press_any_key_to_continue();
 }
@@ -38,13 +36,20 @@ void gameStart(func& func, text& gameText){
 
 int main() {
     // -- 初始化 --
+    // system("iconv -f utf-8 -t gbk main.exe > main.gbk.exe"); // 不知道能不能行 // 不能行
     text gameText;
     func func;
-    character player(10,2,1);
-    character enemy(10,3,1);
+    character player(10,2,2);
+    character enemy(10,3,0);
+    // -- 判断系统 --
+    // log(func.whichSystem());
+    func.displayWhichSystem(func.whichSystem());
+    int systemNum = func.whichSystem();
+    func.press_any_key_to_continue();
 
-    gameLoading(func);
-    gameStart(func, gameText);
+    gameLoading(func, systemNum);
+    gameStart(func, gameText, systemNum);
+    func.clear(systemNum);
 
     while (player.isAlive() && enemy.isAlive()) {
         cout << "your hp is:" << player.getHP() << endl;
@@ -60,6 +65,8 @@ int main() {
             // player.attack(enemy);
             sleep(1);
             cout << "你对敌方造成了" << player.attack(enemy) << "点伤害" << endl;
+            sleep(1);
+            func.clear(systemNum);
             break;
         case 2:
             log("your enemy is going to attack you! DEFENCE!");
@@ -70,9 +77,13 @@ int main() {
             sleep(1);
             cout << "敌方实际对你造成了" << enemy.attack(player) << "点伤害!" << endl;
             player.decreaseDefForOneRound();
+            sleep(1);
+            func.clear(systemNum);
             break;
         default:
             log("输数字，ok？");
+            sleep(1);
+            func.clear(systemNum);
             break;
         }
     }

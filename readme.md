@@ -9,8 +9,12 @@
 
 # VERSION
 - 0.0.1 雏形，是答辩
-- 0.0.2 加入了贴心的提示，不然会乱码噢
+- 0.0.2 加入了贴心的提示，不然会乱码噢（其实没有加，加了才发现看提示也是乱码的
+        理论上可以生成一个gbk的exe，就不用chcp 65001了
+            *运行之后应该会在同目录多一个exe，如果有就运行另一个；如果没有就按之前的步骤来
         加入了清屏的效果，界面看起来干净一点了！
+- 0.0.3 修复了windows没有clear命令的bug
+- 0.1.0 敌人40%几率攻击，60%几率防御
 
 # BUG
 ```
@@ -23,15 +27,4 @@ your enemy's hp is:8
 ```
 显示的是-3，但是实际造成0伤害，只是显示问题
 
-2.  构建生成的exe文件，在其他电脑上运行出现中文乱码
-2023.1.9 22:30
-用了 iconv 生成了 main_gbk.cpp。但是感觉并没有什么卵用。
-用这个，万一以后要用呢
-iconv -f UTF-8 -t GBK main.cpp > main_gbk.cpp
-
-*不如把所有中文都改成英语
-2023.1.9 23:30
-解决了，看这个
-https://blog.csdn.net/weixin_49189242/article/details/115701486?ops_request_misc=&request_id=&biz_id=102&utm_term=CMD如何改编码&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-115701486.142^v70^control,201^v4^add_ask&spm=1018.2226.3001.4449
-然后把exe拖进终端运行
 
